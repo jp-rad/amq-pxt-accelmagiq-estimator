@@ -31,7 +31,7 @@ serial.writeLine("*")
 serial.writeLine("*")
 serial.writeLine("*")
 serial.writeLine("*")
-serial.writeLine("AccelMagiQ1")
+serial.writeLine("AccelMagiQ")
 basic.showLeds(`
     . # # # .
     # # . # .
