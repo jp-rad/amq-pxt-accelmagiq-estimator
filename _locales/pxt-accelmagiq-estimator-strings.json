@@ -1,0 +1,14 @@
+{
+  "accelmagiq.CoordinateSystem.BASIC": "BASIC: a non-tilt compensated bearing of the device (North: logo mark)",
+  "accelmagiq.CoordinateSystem.BASIC|block": "BASIC",
+  "accelmagiq.CoordinateSystem.RAW": "RAW: a raw coordinate system (North: A-button, upside-down)",
+  "accelmagiq.CoordinateSystem.RAW|block": "RAW",
+  "accelmagiq.CoordinateSystem.TILT": "TILT: a tilt compensated bearing of the device (North: back side)",
+  "accelmagiq.CoordinateSystem.TILT|block": "TILT",
+  "accelmagiq.estimate|block": "estimate quaternion",
+  "accelmagiq.setCoordinateSystem|block": "set coordinate system %system",
+  "accelmagiq.setLowPassFilterAlpha|block": "set alpha %alpha",
+  "accelmagiq|block": "AccelMagiQ",
+  "{id:category}Accelmagiq": "Accelmagiq",
+  "{id:group}Sensor": "Sensor"
+}
