@@ -1,15 +1,18 @@
 {
-    "name": "pxt-ubit-extension",
-    "version": "0.1.0-alpha",
-    "description": "(description: this description is written in pxt.json)",
+    "name": "pxt-accelmagiq-estimator",
+    "version": "0.0.1-alpha",
+    "description": "A Simplified Analytic Attitude Determination Algorithm Using Accelerometer and Magnetometer on micro:bit.",
     "dependencies": {
         "core": "*"
     },
     "files": [
-        "src/customlib.h",
-        "src/customlib.cpp",
-        "src/custom.ts",
-        "src/custom.cpp",
+        "src/lib/AccelMagiQLibConfig.h",
+        "src/lib/AccelMagiQLibCoordinateSpaceFilter.h",
+        "src/lib/AccelMagiQLibCoordinateSpaceFilter.cpp",
+        "src/lib/AccelMagiQLibQuaternionEstimator.h",
+        "src/lib/AccelMagiQLibQuaternionEstimator.cpp",
+        "src/accelmagiq.cpp",
+        "src/accelmagiq.ts",
         "enums.d.ts",
         "shims.d.ts",
         "README.md"
@@ -24,5 +27,17 @@
     "supportedTargets": [
         "microbit"
     ],
-    "preferredEditor": "tsprj"
+    "preferredEditor": "tsprj",
+    "yotta": {
+        "definitions": {
+            "ACCELMAGIQ_DEFAULT_LOW_PASS_FILTER_ALPHA": 0.3,
+            "ACCELMAGIQ_DEFAULT_COORDINATE_SYSTEM": 1,
+            "ACCELMAGIQ_ESTIMATE_METHOD": 1
+        },
+        "config": {
+            "ACCELMAGIQ_DEFAULT_LOW_PASS_FILTER_ALPHA": 0.3,
+            "ACCELMAGIQ_DEFAULT_COORDINATE_SYSTEM": 1,
+            "ACCELMAGIQ_ESTIMATE_METHOD": 1
+        }
+    }
 }
