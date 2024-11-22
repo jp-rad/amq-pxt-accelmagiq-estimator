@@ -1,20 +1,46 @@
 /**
  * tests go here; this will not be compiled when this package is used as an extension.
  */
-// bar
 input.onButtonPressed(Button.A, function () {
-    a = custom.bar()
+    accelmagiq.setCoordinateSystem(accelmagiq.CoordinateSystem.BASIC)
+    basic.showLeds(`
+        . . # . .
+        . # # # .
+        # . # . #
+        . . # . .
+        . . # . .
+        `)
 })
-// baz
+input.onButtonPressed(Button.AB, function () {
+    input.calibrateCompass()
+})
 input.onButtonPressed(Button.B, function () {
-    a = custom.baz()
+    accelmagiq.setCoordinateSystem(accelmagiq.CoordinateSystem.TILT)
+    basic.showLeds(`
+        . . . . .
+        . . # . .
+        # # # # #
+        . . # . .
+        . . . . .
+        `)
 })
-let a = 0
-a = -1
-basic.showString("B")
+let quat: number[] = []
+serial.redirectToUSB()
+serial.setBaudRate(BaudRate.BaudRate115200)
+serial.writeLine("*")
+serial.writeLine("*")
+serial.writeLine("*")
+serial.writeLine("*")
+serial.writeLine("AccelMagiQ")
+basic.showLeds(`
+    . # # # .
+    # # . # .
+    # . . # .
+    # # # # #
+    . . . # .
+    `)
 basic.forever(function () {
-    if (0 <= a) {
-        basic.showNumber(a)
-    }
-    basic.pause(100)
+    quat = accelmagiq.estimate()
+    serial.writeNumbers(quat)
+    basic.pause(200)
 })
