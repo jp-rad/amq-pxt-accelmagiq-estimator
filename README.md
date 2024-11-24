@@ -63,32 +63,57 @@ Released HEX file can be imported as an **extension** in MakeCode.
 
 ## Example
 
-```blocks
+**JavaScript**
 
+```js
+
+let angle: accelmagiq.EulerAngles = null
 let estimated: number[] = []
 if (input.buttonIsPressed(Button.B)) {
     input.calibrateCompass()
 }
 accelmagiq.setCoordinateSystem(accelmagiq.CoordinateSystem.BASIC)
-accelmagiq.setLowPassFilterAlpha(0.3)
+accelmagiq.setLowPassFilterAlpha(0.2)
 basic.forever(function () {
     estimated = accelmagiq.estimate()
     accelmagiq.notifyData(estimated)
+    angle = accelmagiq.rpyFromQuat(accelmagiq.quatFrom(estimated))
+    serial.writeNumbers([
+    accelmagiq.intDeg(accelmagiq.angle(angle, accelmagiq.AngleRPY.Roll)),
+    accelmagiq.intDeg(accelmagiq.angle(angle, accelmagiq.AngleRPY.Pitch)),
+    accelmagiq.intDeg(accelmagiq.angle(angle, accelmagiq.AngleRPY.Yaw)),
+    accelmagiq.intDeg(accelmagiq.angle(angle, accelmagiq.AngleRPY.Azimuth))
+    ])
 })
 
 ```
 
-```js
+**Blocks**
 
-let estimated: number[] = []
+```blocks
+
 if (input.buttonIsPressed(Button.B)) {
     input.calibrateCompass()
 }
 accelmagiq.setCoordinateSystem(accelmagiq.CoordinateSystem.BASIC)
-accelmagiq.setLowPassFilterAlpha(0.3)
+accelmagiq.setLowPassFilterAlpha(0.2)
+
+```
+
+```blocks
+
+let estimated: number[] = []
+let angle: accelmagiq.EulerAngles = null
 basic.forever(function () {
     estimated = accelmagiq.estimate()
     accelmagiq.notifyData(estimated)
+    angle = accelmagiq.rpyFromQuat(accelmagiq.quatFrom(estimated))
+    serial.writeNumbers([
+    accelmagiq.intDeg(accelmagiq.angle(angle, accelmagiq.AngleRPY.Roll)),
+    accelmagiq.intDeg(accelmagiq.angle(angle, accelmagiq.AngleRPY.Pitch)),
+    accelmagiq.intDeg(accelmagiq.angle(angle, accelmagiq.AngleRPY.Yaw)),
+    accelmagiq.intDeg(accelmagiq.angle(angle, accelmagiq.AngleRPY.Azimuth))
+    ])
 })
 
 ```
@@ -97,5 +122,6 @@ basic.forever(function () {
 
 * for PXT/microbit
 
-<script src="https://cdn.jsdelivr.net/gh/jp-rad/pxt-ubit-extension@0.5.0/.github/statics/gh-pages-embed.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/jp-rad/pxt-ubit-extension/.github/statics/gh-pages-img.css">
+<script src="https://cdn.jsdelivr.net/gh/jp-rad/pxt-ubit-extension/.github/statics/gh-pages-embed.js"></script>
 <script>makeCodeRender("{{ site.makecode.home_url }}", [ "estimator=github:jp-rad/amq-pxt-accelmagiq-estimator", "service=github:jp-rad/amq-pxt-accelmagiq-service", "math=github:jp-rad/amq-pxt-accelmagiq-math", ]);</script>
