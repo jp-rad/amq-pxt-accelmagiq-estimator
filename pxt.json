@@ -1,6 +1,6 @@
 {
     "name": "pxt-accelmagiq-estimator",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "A Simplified Analytic Attitude Determination Algorithm Using Accelerometer and Magnetometer on micro:bit.",
     "dependencies": {
         "core": "*"
